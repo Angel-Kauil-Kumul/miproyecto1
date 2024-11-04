@@ -1,0 +1,1 @@
+este es mi loro /: {{ $minombre }} {{$miapellido  }}

@@ -1,0 +1,1 @@
+este es mi capibara /: {{ $minombre }} {{$miapellido  }}
