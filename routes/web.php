@@ -3,6 +3,7 @@
 use App\Http\Controllers\CatController;
 Use App\Http\Controllers\LoroController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComputerController;
 use App\Models\Computer;
 
 Route::get('/', function () {
@@ -154,10 +155,21 @@ Route::get('/insertarvalor', function () {
 
     //SE ESTABLECE UN FORMATO PARA EL DESPLIEGUE DE FECHA
 
-    $computer = Computer::find(1);
+    /*$computer = Computer::find(1);
 
     //EJEMPLO 1 - despliega la fecha en el formato que le indiquemos
     /*return $computer->published_at->format('d-m-Y');*/
     //EJEMPLO 2 - despliega cuanto tiempo pasó despues de publicado
-    return $computer->published_at->diffForHumans();
+    /*return $computer->published_at->diffForHumans();*/
 });
+
+//despliegue de computadoras en la base de datos
+Route::get('/computers',[ComputerController::class, 'index']);
+//formulario para la creación de computadoras
+Route::get('/computers/create',[ComputerController::class, 'create']);
+//despliegue de información almacenada en la BD
+Route::get('/computers/{disp}',[ComputerController::class, 'show']);
+Route::post('/computers',[ComputerController::class, 'store']);
+Route::get('/computers/{disp}/edit',[ComputerController::class, 'edit']);
+Route::put('/computers/{disp}',[ComputerController::class, 'update']);
+Route::delete('/computers/{disp}',[ComputerController::class, 'destroy']);
